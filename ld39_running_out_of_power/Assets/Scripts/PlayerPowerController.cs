@@ -23,7 +23,14 @@ public class PlayerPowerController : MonoBehaviour {
 	}
 
 	public void addPower(int add) {
+		Debug.Log("POWER! " + add);
 		power += add;
 		power = Mathf.Clamp(power, 0, 1000);
+		if(power == 0)
+			Kill();
+	}
+
+	private void Kill() {
+
 	}
 }

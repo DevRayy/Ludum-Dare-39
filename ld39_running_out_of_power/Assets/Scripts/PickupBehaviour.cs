@@ -5,6 +5,7 @@ using UnityEngine;
 public class PickupBehaviour : MonoBehaviour {
 
 	public int power;
+	public float rotationSpeed;
 	// Use this for initialization
 	void Start () {
 		
@@ -12,7 +13,7 @@ public class PickupBehaviour : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		transform.Rotate(0, rotationSpeed * Time.deltaTime, 0);
 	}
 
 	void OnTriggerEnter(Collider other) {
