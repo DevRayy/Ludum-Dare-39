@@ -25,7 +25,7 @@ public class PlayerMovement : MonoBehaviour {
 
  		Vector3 temp = new Vector3(x, 0, z).normalized;
  		Vector3 rotatedVelocity = Quaternion.LookRotation(transform.forward) * temp;
-		float speed = baseSpeed + powerController.power * 15 / 1000.0f;
+		float speed = baseSpeed + powerController.power * 15 / 100.0f;
 		rb.velocity = rotatedVelocity * speed;
 
 		float mousePos = Input.mousePosition.x;

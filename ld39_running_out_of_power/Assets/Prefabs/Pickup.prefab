@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4502498317020746}
   - component: {fileID: 108695962952837798}
-  m_Layer: 10
+  m_Layer: 2
   m_Name: Point light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 65892560211840944}
   - component: {fileID: 23816081014523866}
   - component: {fileID: 114889508064438652}
-  m_Layer: 10
+  m_Layer: 2
   m_Name: Pickup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -185,5 +185,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afe2fc8d4da60b446a6d788bc8c529b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  power: 50
+  power: 10
   rotationSpeed: 100

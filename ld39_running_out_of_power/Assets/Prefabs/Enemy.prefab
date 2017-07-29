@@ -231,7 +231,7 @@ Light:
     m_NormalBias: 0.4
     m_NearPlane: 0.2
   m_Cookie: {fileID: 0}
-  m_DrawHalo: 1
+  m_DrawHalo: 0
   m_Flare: {fileID: 0}
   m_RenderMode: 0
   m_CullingMask:
@@ -271,7 +271,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dmg: 2
   speed: 5
+  pickupChance: 0.2
   pickup: {fileID: 1468349609583224, guid: ae0b76f3563eff34384eb12be93e3263, type: 2}
+  particleObject: {fileID: 1990134217570102, guid: a95718a233f715c41b6285399775e932,
+    type: 2}
+  timeToDestroyAfter: 10
 --- !u!136 &136538859776958026
 CapsuleCollider:
   m_ObjectHideFlags: 1
