@@ -9,18 +9,32 @@ public class RaycastShoote : MonoBehaviour {
     public float hitForce = 100f;                                       // Amount of force which will be added to objects with a rigidbody shot by the player
     public Transform gunEnd;                                            // Holds a reference to the gun end object, marking the muzzle location of the gun
 	public Light gunLight;
+
+	public AudioClip audioClip;
+	public GameObject audioPlayer;
                                             
     //private AudioSource gunAudio;                                       // Reference to the audio source which will play our shooting sound effect
     private LineRenderer laserLine;                                     // Reference to the LineRenderer component which will display our laserline
     private float nextFire;                                             // Float to store the time the player will be allowed to fire again, after firing
 	private PlayerPowerController ppc;
+    private GameController gc;
+    private Camera camera;
+
+
+        float duration;
+        float magnitude = 0.05f;  
 
 
     void Start () 
     {
+        duration = fireRate;
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = false;
         // Get and store a reference to our LineRenderer component
         laserLine = GetComponent<LineRenderer>();
 		ppc = GetComponent<PlayerPowerController>();
+		gc = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
+        camera = GetComponentInChildren<Camera>();
 
 		laserLine.enabled = false;
 		gunLight.enabled = false;
@@ -29,6 +43,8 @@ public class RaycastShoote : MonoBehaviour {
 
     void Update () 
     {
+		if(!gc.gameRunning)
+			return;
         if (Input.GetButton("Fire1") && Time.time > nextFire) 
         {
             nextFire = Time.time + fireRate;
@@ -40,6 +56,7 @@ public class RaycastShoote : MonoBehaviour {
 
             laserLine.SetPosition (0, gunEnd.position);
 			StartCoroutine(ShotEffects());
+            StartCoroutine(Shake());
 
             if (Physics.Raycast (rayOrigin, transform.forward, out hit, weaponRange))
             {
@@ -67,8 +84,39 @@ public class RaycastShoote : MonoBehaviour {
 	IEnumerator ShotEffects() {
 		laserLine.enabled = true;
 		gunLight.enabled = true;
+        AudioSource audio = ((GameObject) Instantiate(audioPlayer, transform.position, transform.rotation)).GetComponent<AudioSource>();
+        audio.clip = audioClip;
+        audio.Play();
 		yield return new WaitForSeconds(.02f);
 		laserLine.enabled = false;
 		gunLight.enabled = false;
 	}
+    
+    IEnumerator Shake() {  
+        float elapsed = 0.0f;
+        
+        Vector3 originalCamPos = camera.transform.localPosition;
+        
+        while (elapsed < duration) {
+            
+            elapsed += Time.deltaTime;          
+            
+            float percentComplete = elapsed / duration;         
+            float damper = 1.0f - Mathf.Clamp(4.0f * percentComplete - 3.0f, 0.0f, 1.0f);
+            
+            // map value to [-1, 1]
+            float x = Random.value * 2.0f - 1.0f;
+            float y = Random.value * 2.0f - 1.0f;
+            float z = Random.value * 2.0f - 1.0f;
+            x *= magnitude * damper;
+            y *= magnitude * damper;
+            z *= magnitude * damper;
+            
+            camera.transform.localPosition = new Vector3(x, y, z) + camera.transform.localPosition;
+                
+            yield return null;
+        }
+        
+        camera.transform.localPosition = originalCamPos;
+    }
 }

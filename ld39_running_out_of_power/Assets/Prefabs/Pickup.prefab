@@ -187,3 +187,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   power: 10
   rotationSpeed: 100
+  audioClip: {fileID: 8300000, guid: 5c40d98e14662c44c9d13b4318ca0a86, type: 3}
+  audioPlayer: {fileID: 1748481241352056, guid: 2d82bd4fe115e264eaf8f744b0bce172,
+    type: 2}

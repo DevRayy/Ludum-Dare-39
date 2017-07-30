@@ -14,20 +14,31 @@ public class Enemy : MonoBehaviour {
 	private GameObject player;
 	private Rigidbody rb;
     private int currentHealth;
+	private GameController gc;
+	public AudioClip audioClip;
+	public AudioClip audioClip2;
+	public GameObject audioPlayer;
 
 	void Start() {
 		currentHealth = (int) Random.Range(3.0f, 6.0f);
 		player = GameObject.FindGameObjectWithTag("Player");
+		gc = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
 		rb = GetComponent<Rigidbody>();
+		StartCoroutine(DestroyAfterTime());
 	}
 
 	void FixedUpdate() {
+		if(!gc.gameRunning)
+			return;
 		transform.position = new Vector3(transform.position.x,
 										1,
 										transform.position.z);
-		transform.LookAt(player.transform);
-		rb.velocity = transform.forward * speed;
-		Debug.Log(rb.velocity);
+		if(player != null) {
+			transform.LookAt(player.transform);
+			rb.velocity = transform.forward * speed;
+		} else {
+			transform.RotateAround(transform.position, transform.up, 100.0f * Time.deltaTime);
+		}
 	}
 
     public void Damage(int damageAmount)
@@ -43,6 +54,9 @@ public class Enemy : MonoBehaviour {
 	private void Kill() {
 		if(Random.Range(0f, 1f) < pickupChance)
 			Instantiate(pickup, transform.position, transform.rotation);
+		AudioSource audio = ((GameObject) Instantiate(audioPlayer, transform.position, transform.rotation)).GetComponent<AudioSource>();
+		audio.clip = audioClip2;
+		audio.Play();
 		InstantiateParticles();
 		Destroy(this.gameObject);
 	}
@@ -63,7 +77,9 @@ public class Enemy : MonoBehaviour {
 
 	IEnumerator DestroyAfterTime() {
 		yield return new WaitForSeconds(timeToDestroyAfter + Random.Range(0.0f, 1.0f));
-		Kill();
+		if(Random.Range(0f, 1f) < 0.1f)
+			Instantiate(pickup, transform.position, transform.rotation);
+		Destroy(this.gameObject);
 	}
 
 	void OnCollisionEnter (Collision col)
@@ -71,7 +87,9 @@ public class Enemy : MonoBehaviour {
         if(col.gameObject.tag == "Player")
         {
             col.gameObject.GetComponent<PlayerPowerController>().addPower(-dmg);
-			Debug.Log("DMG!");
+			 AudioSource audio = ((GameObject) Instantiate(audioPlayer, transform.position, transform.rotation)).GetComponent<AudioSource>();
+			 audio.clip = audioClip;
+			 audio.Play();
         }
     }	
 	
@@ -80,7 +98,6 @@ public class Enemy : MonoBehaviour {
         if(col.gameObject.tag == "Player")
         {
             col.gameObject.GetComponent<PlayerPowerController>().addPower(-dmg);
-			Debug.Log("DMG!");
         }
     }
 }

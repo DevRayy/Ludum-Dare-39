@@ -13,6 +13,6 @@ public class PowerTextController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		textMesh.text = "POWER LEFT\n" + ppc.power;
+		textMesh.text = "POWER\n" + ppc.power;
 	}
 }

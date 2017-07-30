@@ -6,6 +6,8 @@ public class PickupBehaviour : MonoBehaviour {
 
 	public int power;
 	public float rotationSpeed;
+	public AudioClip audioClip;
+	public GameObject audioPlayer;
 	// Use this for initialization
 	void Start () {
 		
@@ -20,6 +22,9 @@ public class PickupBehaviour : MonoBehaviour {
 	void OnTriggerEnter(Collider other) {
          if (other.tag == "Player") {
              other.GetComponent<PlayerPowerController>().addPower(power);
+			 AudioSource audio = ((GameObject) Instantiate(audioPlayer, transform.position, transform.rotation)).GetComponent<AudioSource>();
+			 audio.clip = audioClip;
+			 audio.Play();
 			 Destroy(this.gameObject);
          }
      }

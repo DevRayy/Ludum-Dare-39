@@ -70,7 +70,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1584240078854484}
   m_LocalRotation: {x: -0, y: -0.78999466, z: 0, w: -0.6131138}
-  m_LocalPosition: {x: 3.59, y: 1, z: -4.14}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4696424942832906}
@@ -186,7 +186,7 @@ Light:
   m_RenderMode: 1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 4294965247
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 0
@@ -271,11 +271,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dmg: 2
   speed: 5
-  pickupChance: 0.2
+  pickupChance: 0.6
   pickup: {fileID: 1468349609583224, guid: ae0b76f3563eff34384eb12be93e3263, type: 2}
   particleObject: {fileID: 1990134217570102, guid: a95718a233f715c41b6285399775e932,
     type: 2}
-  timeToDestroyAfter: 10
+  timeToDestroyAfter: 20
+  audioClip: {fileID: 8300000, guid: 3aa389d6e380a6e4282a3a66a4b3c00e, type: 3}
+  audioClip2: {fileID: 8300000, guid: 7c294ed466a10f249a0482bfe776501b, type: 3}
+  audioPlayer: {fileID: 1748481241352056, guid: 2d82bd4fe115e264eaf8f744b0bce172,
+    type: 2}
 --- !u!136 &136538859776958026
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -285,7 +289,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
+  m_Radius: 0.87
+  m_Height: 0
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}

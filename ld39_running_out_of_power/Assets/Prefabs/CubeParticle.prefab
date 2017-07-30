@@ -122,3 +122,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeToDestroyAfter: 4
+  audioClip: {fileID: 8300000, guid: 96a91c55e0fd6ac4db2e3abe1252266c, type: 3}
+  audioPlayer: {fileID: 1748481241352056, guid: 2d82bd4fe115e264eaf8f744b0bce172,
+    type: 2}

@@ -24,3 +24,5 @@ sysinfo.txt
 .vscode
 Temp
 obj
+*.mp3
+*.wav
