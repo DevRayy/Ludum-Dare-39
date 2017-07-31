@@ -1,4 +1,4 @@
-WebGL
+WindowsStandalone
 dc07d7ad69b399a46e92c483bf1c04ca UnityEngine.Analytics.dll:UnityEngine.Analytics.AnalyticsTracker
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationPlayableAsset
 cac917711d0e84d412d48737b6fc9ae7 UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationTrack
@@ -110,6 +110,7 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.VR.WSA.Spa
 5891742088f5035932e50b3ad7fcee4d Assembly-CSharp.dll:.Enemy
 7c6fb094f5246b8f18656fe8bd7cfc58 Assembly-CSharp.dll:.TimeTextController
 49115bcfcde270164153cee399f781bc Assembly-CSharp.dll:.RaycastShoote
+7f94bc150cff4a5fcb747eee6fd6382c Assembly-CSharp.dll:.GameController
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.CameraController
 fc1e0f4d8439d9928083474691511a13 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Networking.dll:UnityEngine.Networking.NetworkBehaviour
@@ -139,4 +140,3 @@ cf5f715c796c8940569598a93b7c4c26 Assembly-CSharp.dll:.CubeParticleController
 a5f8434299a6b5211f105bb46e4190bb Assembly-CSharp.dll:.PickupBehaviour
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.PowerTextController
 5d6558ead967e53c4f7306446f391a4d Assembly-CSharp.dll:.PlayerPowerController
-7f94bc150cff4a5fcb747eee6fd6382c Assembly-CSharp.dll:.GameController
